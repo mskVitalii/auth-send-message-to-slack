@@ -1,0 +1,64 @@
+# https://firebase.google.com/docs/extensions/reference/extension-yaml
+
+name: auth-send-message-to-slack
+version: 0.0.1
+specVersion: v1beta
+
+displayName: Message to Slack on auth
+
+description: >-
+  Sends a message to your Slack channel once a new user is created in Firebase Authentication.
+
+author:
+  authorName: Vitalii Popov
+  url: https://github.com/mskVitalii
+
+icon: icon.png
+tags: [auth, messaging, slack]
+
+license: Apache-2.0 # https://spdx.org/licenses/
+
+sourceUrl: https://github.com/mskVitalii/auth-send-message-to-slack
+
+# https://firebase.google.com/docs/extensions/reference/extension-yaml#billing-required-field
+billingRequired: true
+
+# In an `apis` field, list any Google APIs (like Cloud Translation, BigQuery, etc.)
+# required for your extension to operate.
+# https://firebase.google.com/docs/extensions/reference/extension-yaml#apis-field
+
+# In a `roles` field, list any IAM access roles required for your extension to operate.
+# https://firebase.google.com/docs/extensions/reference/extension-yaml#roles-field
+
+# https://firebase.google.com/docs/extensions/reference/extension-yaml#resources-field
+resources:
+  - name: sendSlackMessage
+    type: firebaseextensions.v1beta.function
+    description: >-
+      Auth triggered function that sends a message to a Slack channel when a new user is created.
+    properties:
+      eventTrigger:
+        eventType: providers/firebase.auth/eventTypes/user.create
+        resource: projects/${PROJECT_ID}
+      runtime: 'nodejs18'
+
+# https://firebase.google.com/docs/extensions/reference/extension-yaml#params-field
+params:
+  - param: SLACK_WEBHOOK_URL
+    label: Slack Webhook URL
+    description: >-
+      What is the Slack Incoming Webhook URL where messages should be sent?
+    type: secret
+    required: true
+    immutable: false
+
+  - param: SLACK_MESSAGE
+    label: Message
+    description: >-
+      What message do you want to send to the Slack channel?
+      You can use the variable ${user.email} to include the new user's email.
+      UserRecord: https://firebase.google.com/docs/reference/admin/node/firebase-admin.auth.userrecord
+    default: 'A new user has joined: ${user.email} 🎉'
+    type: string
+    required: false
+    immutable: false
