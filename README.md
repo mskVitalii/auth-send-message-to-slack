@@ -25,7 +25,7 @@ To install an extension, your project must be on the [Blaze (pay as you go) plan
 - **sendMessage:** Sends a message to the telegram bot.
 
 ---
-## Miscellaneous
+### Miscellaneous
 
-If this extension doesn’t work, check out a similar extension:
+If this extension doesn’t work, create an issue & check out a similar extension:
 https://extensions.dev/extensions/edgarjc/firestore-send-slack-notification
