@@ -23,8 +23,9 @@ To install an extension, your project must be on the [Blaze (pay as you go) plan
 ### Cloud Functions:
 
 - **sendMessage:** Sends a message to the telegram bot.
- 
+
+---
 ## Miscellaneous
 
-The extension uses the Functions V1 API. If it doesn’t work, check out a similar extension written using Functions V2:
+If this extension doesn’t work, check out a similar extension:
 https://extensions.dev/extensions/edgarjc/firestore-send-slack-notification
