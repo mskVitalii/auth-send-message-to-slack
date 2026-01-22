@@ -1,6 +1,6 @@
 # auth-send-message-to-slack
 
-This extension sends a message to your Slack bot once a new user is created
+This Firebase extension sends a message to your Slack bot once a new user is created
 
 **Author**: Vitalii Popov (**[https://github.com/mskVitalii](https://github.com/mskVitalii)**)
 
